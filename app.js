@@ -5,12 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const {
-  PORT,
-  NODE_ENV,
-  MONGO_URL,
-  MONGO_URL_DEV,
-} = require('./utils/constants');
+const { PORT, DB_URL } = require('./config');
 const router = require('./routes');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errorHandler');
@@ -18,10 +13,14 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-mongoose.connect(NODE_ENV === 'production' ? MONGO_URL : MONGO_URL_DEV, {
+mongoose.connect(DB_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useCreateIndex: true,
+  // useFindAndModify: false,
+  // useUnifiedTopology: true,
 });
+
+console.log(DB_URL);
 
 app.use(bodyParser.json());
 

@@ -5,7 +5,7 @@ const { NotFoundError } = require('../errors/NotFoundError');
 const { ConflictError } = require('../errors/ConflictError');
 const { BadRequestError } = require('../errors/BadRequestError');
 
-const { NODE_ENV, JWT_SECRET, JWT_SECRET_DEV } = require('../utils/constants');
+const { NODE_ENV, JWT_SECRET, JWT_SECRET_DEV } = require('../config');
 
 module.exports.createUser = async (req, res, next) => {
   try {

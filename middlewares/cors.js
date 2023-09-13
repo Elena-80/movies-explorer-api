@@ -1,7 +1,8 @@
 const allowedCors = [
-
   'http://localhost:3000',
   'https://localhost:3000',
+  'http://elenamovies.nomoredomainsicu.ru',
+  'https://elenamovies.nomoredomainsicu.ru',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
