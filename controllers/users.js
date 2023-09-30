@@ -54,8 +54,9 @@ module.exports.login = async (req, res, next) => {
         maxAge: 6.048e+8,
         sameSite: 'none',
         secure: true,
-      })
-      return res.send({ message: 'Token was saved in the cookies.' });
+      });
+      return res.send({ _id: user._id, token });
+      // return res.send({ message: 'Token was saved in the cookies.' });
     }
     return res.status(201).send('Вы авторизованы.');
   } catch (err) {
