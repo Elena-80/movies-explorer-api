@@ -46,7 +46,7 @@ module.exports.getMovies = async (req, res, next) => {
   try {
     const movies = await Movie.find({ owner });
     if (!movies || movies.length === 0) {
-      return res.send('Сохраненных фильмов не найдено.');
+      return res.send("Сохраненных фильмов не найдено.");
     }
     return res.status(200).send(movies);
   } catch (err) {
