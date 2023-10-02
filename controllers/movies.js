@@ -46,7 +46,8 @@ module.exports.getMovies = async (req, res, next) => {
   try {
     const movies = await Movie.find({ owner });
     if (!movies || movies.length === 0) {
-      res.send('Сохраненных фильмов не найдено.');
+      return next(new NotFoundError('Сохраненных фильмов не найдено.'));
+      // res.send('Сохраненных фильмов не найдено.');
     }
     return res.status(200).send(movies);
   } catch (err) {
@@ -70,7 +71,8 @@ module.exports.deleteMovie = async (req, res, next) => {
     if (!deletedMovie) {
       return next(new NotFoundError('Фильм не найден.'));
     }
-    return res.status(200).send('Фильм успешно удален!');
+    return res.status(200).send(movie);
+    // 'Фильм успешно удален!'
   } catch (err) {
     return next(err);
   }
