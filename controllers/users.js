@@ -49,12 +49,12 @@ module.exports.login = async (req, res, next) => {
           expiresIn: '7d',
         },
       );
-      res.cookie('jwt', token, {
-        httpOnly: true,
-        maxAge: 6.048e+8,
-        sameSite: 'none',
-        secure: true,
-      });
+      // res.cookie('jwt', token, {
+      //   httpOnly: true,
+      //   maxAge: 6.048e+8,
+      //   sameSite: 'none',
+      //   secure: true,
+      // });
       return res.send({ _id: user._id, token });
       // return res.send({ message: 'Token was saved in the cookies.' });
     }
@@ -100,14 +100,6 @@ module.exports.updateUser = async (req, res, next) => {
   }
 };
 
-// module.exports.logout = (req, res) => {
-//   res.cookie('jwt', {httpOnly: true, sameSite: 'none', secure: true, expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
-// };
-
 module.exports.logout = (req, res) => {
-  res.cookie('jwt', {}, {
-    httpOnly: true,
-    sameSite: 'none',
-    secure: true,
-    expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
+  res.cookie('jwt', {httpOnly: true, sameSite: 'none', secure: true, expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
 };
