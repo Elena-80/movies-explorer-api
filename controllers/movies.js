@@ -46,7 +46,7 @@ module.exports.getMovies = async (req, res, next) => {
   try {
     const movies = await Movie.find({ owner });
     if (!movies || movies.length === 0) {
-      return res.send({ message: 'Token was deleted from cookies.' });
+      res.send('Сохраненных фильмов не найдено.');
     }
     return res.status(200).send(movies);
   } catch (err) {
@@ -70,7 +70,7 @@ module.exports.deleteMovie = async (req, res, next) => {
     if (!deletedMovie) {
       return next(new NotFoundError('Фильм не найден.'));
     }
-    return res.status(200).send({ message: 'Фильм успешно удален!' });
+    return res.status(200).send('Фильм успешно удален!');
   } catch (err) {
     return next(err);
   }
