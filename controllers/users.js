@@ -100,6 +100,14 @@ module.exports.updateUser = async (req, res, next) => {
   }
 };
 
+// module.exports.logout = (req, res) => {
+//   res.cookie('jwt', {httpOnly: true, sameSite: 'none', secure: true, expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
+// };
+
 module.exports.logout = (req, res) => {
-  res.cookie('jwt', {httpOnly: true, sameSite: 'none', secure: true, expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
+  res.cookie('jwt', {}, {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true,
+    expires: Date.now()}).send({ message: 'Token was deleted from cookies.' });
 };
